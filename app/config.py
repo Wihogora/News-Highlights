@@ -4,6 +4,7 @@ class Config:
     General configuration parent class
     '''
     pass
+    NEWS_API_BASE_URL ='https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=f69091f5444e473789889991c3f721cc'
 
 
 
@@ -24,11 +25,5 @@ class DevConfig(Config):
     Args:
         Config: The parent configuration class with General configuration settings
     '''
-
-class Config:
-    '''
-    General configuration parent class
-    '''
-    NEWS_API_BASE_URL ='https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=f69091f5444e473789889991c3f721cc'
-
     DEBUG = True
+

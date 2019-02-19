@@ -4,8 +4,9 @@ class Config:
     General configuration parent class
     '''
     pass
-    NEWS_API_BASE_URL ='https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=f69091f5444e473789889991c3f721cc'
-
+    NEWS_API_BASE_URL ='https://newsapi.org/v2/{}?q=bitcoin&from=2019-01-19&sortBy=publishedAt&apiKey={}'
+    NEWS_SOURCES_BASE_URL = 'https://newsapi.org/v2/sources?category{}apiKey={}'
+    NEWS_ARTICLES_BASE_URL = 'https://newsapi.org/v2/everything?sources={}&apiKey={}'
 
 
 class ProdConfig(Config):

@@ -9,6 +9,9 @@ api_key = app.config['NEWS_API_KEY']
 # Getting the news base url
 base_url = app.config['NEWS_API_BASE_URL']
 
+# Getting the source base url
+source_base_url = app.config['NEWS_SOURCES_BASE_URL']
+
 
 def get_news(category):
     '''
@@ -44,13 +47,13 @@ def process_results(news_list):
     news_results = []
     for news_item in news_list:
         title = news_item.get('title')
-        author = news_item.get('author')
+        name = news_item.get('name')
         url = news_item.get('url')
         urlToImage = news_item.get('urlToImage')
         publishedAt = news_item.get('publishedAt')
 
-        if author:
-            news_object = News(title,author,url,urlToImage,publishedAt)
+        if name:
+            news_object = News(title,name,url,urlToImage,publishedAt)
             news_results.append(news_object)
 
     return news_results

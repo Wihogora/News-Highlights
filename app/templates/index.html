@@ -9,24 +9,29 @@
         {% endif %}
     </head>
 {% import 'macros.html' as macro%}
+{% extends 'base.html'%}
+
     <body>
         
-        <!-- Popular news section  -->
-        <h3> Popular News</h3>
-            <ul>
-                {{ macro.displayMovieList(popular)}}
-            </ul>
+        <!-- Content block -->
+        {% block content %}
 
-        <!-- Upcoming news  -->
+        <!-- Popular News -->
+        <h3> Popular News</h3>
+        <ul>
+            {{ macro.displayNewsList(popular)}}
+        </ul>
+        <!-- Upcoming News  -->
         <h3> Upcoming News </h3>
-            <ul>
-                {{ macro.displayMovieList(popular)}}
-            </ul>
-        <!-- Now showing news -->
+        <ul>
+            {{ macro.displayNewsList(upcoming)}}
+        </ul>
+        <!-- Now showing News -->
         <h3>Now Showing</h3>
-            <ul>
-                {{ macro.displayMovieList(popular)}}
-            </ul>
-    
+        <ul>
+            {{ macro.displayNewsList(now_showing)}}
+        </ul>
+
+        {% endblock%}
     </body>
 </html>

@@ -20,19 +20,18 @@ def get_news(category):
     '''
     Function that gets the json response to our url request
     '''
-    get_news_url = base_url.format(category,api_key)
-
+    get_news_url = source_base_url.format(api_key)
+    print(get_news_url)
     with urllib.request.urlopen(get_news_url) as url:
         get_news_data = url.read()
         get_news_response = json.loads(get_news_data)
 
         news_results = None
 
-        if get_news_response['results']:
-            news_results_list = get_news_response['results']
+        if get_news_response['sources']:
+            news_results_list = get_news_response['sources']
             news_results = process_results(news_results_list)
 
-    print(news_results)
 
     return news_results
     
@@ -50,15 +49,9 @@ def process_results(news_list):
     news_results = []
     for news_item in news_list:
         id = news_item.get('id')
-        title = news_item.get('title')
         name = news_item.get('name')
         url = news_item.get('url')
-        urlToImage = news_item.get('urlToImage')
-        publishedAt = news_item.get('publishedAt')
-
-        if name:
-            news_object = News(id,title,name,url,urlToImage,publishedAt)
-            news_results.append(news_object)
+        print(news_results)
 
     return news_results
 
@@ -104,7 +97,7 @@ def process_articles(articles_list):
 
     return articles_results
 
-def get_news(id):
+def get_newss(id):
     get_news_details_url = base_url.format(id,api_key)
 
     with urllib.request.urlopen(get_news_details_url) as url:

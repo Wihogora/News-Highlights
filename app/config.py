@@ -5,7 +5,7 @@ class Config:
     '''
     pass
     NEWS_API_BASE_URL ='https://newsapi.org/v2/{}?q=bitcoin&from=2019-01-19&sortBy=publishedAt&apiKey={}'
-    NEWS_SOURCES_BASE_URL = 'https://newsapi.org/v2/sources?category{}apiKey={}'
+    NEWS_SOURCES_BASE_URL = 'https://newsapi.org/v2/sources?apiKey={}'
     NEWS_ARTICLES_BASE_URL = 'https://newsapi.org/v2/everything?category{}apiKey={}'
 
 

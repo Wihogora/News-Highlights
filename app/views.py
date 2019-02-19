@@ -1,6 +1,7 @@
 from flask import render_template
 from app import app
 from .request import get_news
+# from .requests import get_news,get_newss
 # Views
 # @app.route('/')
 # def index():
@@ -28,8 +29,8 @@ def index():
     '''
 
     # Getting popular news
-    popular_news = get_news('popular')
-    upcoming_news = get_news('upcoming')
-    now_showing_news = get_news('now_playing')
+    popular_news = get_news('everything')
+    # upcoming_news = get_news('upcoming')
+    # now_showing_news = get_news('now_playing')
     title = 'Home - Welcome to The best News Review Website'
-    return render_template('index.html',id=id,title = title,popular = popular_news,upcoming = upcoming_news, now_showing = now_showing_news  )
+    return render_template('index.html',id=id,title = title,popular = popular_news)

@@ -10,7 +10,7 @@ class News:
         self.urlToImage = urlToImage
         self.publishedAt = publishedAt
 
-class Article:
+class Articles:
     '''
     Article class to define article objects
     '''

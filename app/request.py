@@ -12,6 +12,9 @@ base_url = app.config['NEWS_API_BASE_URL']
 # Getting the source base url
 source_base_url = app.config['NEWS_SOURCES_BASE_URL']
 
+# Getting the article base url
+articles_base_url = app.config['NEWS_ARTICLES_API_BASE_URL']
+
 
 def get_news(category):
     '''
@@ -57,3 +60,21 @@ def process_results(news_list):
             news_results.append(news_object)
 
     return news_results
+
+def get_articles(id):
+    '''
+    Function that gets the json response to our url request
+    '''
+    get_articles_url = articles_base_url.format(id,api_key)
+
+    with urllib.request.urlopen(get_articles_url) as url:
+        get_articles_data = url.read()
+        get_articles_response = json.loads(get_articles_data)
+
+        articles_results = None
+
+        if get_articles_response['articles']:
+            articles_results_list = get_articles_response['articles']
+            articles_results = process_articles(articles_results_list)
+
+    return articles_results

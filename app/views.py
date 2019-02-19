@@ -32,4 +32,4 @@ def index():
     upcoming_news = get_news('upcoming')
     now_showing_news = get_news('now_playing')
     title = 'Home - Welcome to The best News Review Website'
-    return render_template('index.html', title = title,popular = popular_news,upcoming = upcoming_news, now_showing = now_showing_news  )
+    return render_template('index.html',id=id,title = title,popular = popular_news,upcoming = upcoming_news, now_showing = now_showing_news  )

@@ -8,15 +8,11 @@
         <title> Welcome to the best News Review website </title>
         {% endif %}
     </head>
-
+{% extends 'bootstrap/base.html'%}
     <body>
-        <!-- Content block -->
-
-        {% block content %}
-         <!-- Content block -->
-
-        {% block content %}
-
-        {% endblock%}
+        <!-- Navbar block  --> 
+        {% block navbar %}
+        {% include 'navbar.html' %}
+        {% endblock %}
     </body>
 </html>

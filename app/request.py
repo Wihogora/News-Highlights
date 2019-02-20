@@ -57,7 +57,8 @@ def process_results(news_list):
         category = news_item.get('category')
         language = news_item.get('language')
         country = news_item.get('country')
-       
+        news_results.append(news_object)
+        
     return news_results
 
 def get_articles(id):
@@ -103,22 +104,22 @@ def process_articles(articles_list):
 
     return articles_results
 
-def get_newss(category):
-    get_news_details_url =articles_base_url.format(id,api_key)
+# def get_newss(category):
+#     get_news_details_url =articles_base_url.format(id,api_key)
 
-    with urllib.request.urlopen(get_news_details_url) as url:
-        news_details_data = url.read()
-        news_details_response = json.loads(news_details_data)
-        print( news_details_response)
-        news_object = None
-        if news_details_response:
-            id = news_details_response.get('id')
-            title = news_details_response.get('title')
-            name = news_details_response.get('name')
-            url = news_details_response.get('url')
-            urlToImage = news_details_response.get('urlToImage')
-            publishedAt = news_details_response.get('publishedAt')
+#     with urllib.request.urlopen(get_news_details_url) as url:
+#         news_details_data = url.read()
+#         news_details_response = json.loads(news_details_data)
+#         print( news_details_response)
+#         news_object = None
+#         if news_details_response:
+#             id = news_details_response.get('id')
+#             title = news_details_response.get('title')
+#             name = news_details_response.get('name')
+#             url = news_details_response.get('url')
+#             urlToImage = news_details_response.get('urlToImage')
+#             publishedAt = news_details_response.get('publishedAt')
 
-            news_object = News(id,title,name,url,urlToImage,publishedAt)
+#             news_object = News(id,title,name,url,urlToImage,publishedAt)
 
-    return news_object
+#     return news_object

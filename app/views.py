@@ -1,25 +1,6 @@
 from flask import render_template
 from app import app
-from .request import get_news
-# from .requests import get_news,get_newss
-# Views
-# @app.route('/')
-# def index():
-
-#     '''
-#     View root page function that returns the index page and its data
-#     '''
-#     message="hello world"
-#     return render_template('index.html',message = message)
-
-
-@app.route('/news/<news_id>')
-def news(news_id):
-
-    '''
-    View news page function that returns the news details page and its data
-    '''
-    return render_template('news.html',id = news_id)
+from .request import get_news,get_articles
 
 @app.route('/')
 def index():
@@ -27,10 +8,24 @@ def index():
     '''
     View root page function that returns the index page and its data
     '''
+ # Getting popular news
+    title = 'News Highlight'
+    general_news = get_news('general')
+    business_news = get_news('business')
+    sports_news = get_news('sports')
+    technology_news = get_news('technology')
+    return render_template('index.html', title = title, general = general_news, business = business_news, sports = sports_news, technology = technology_news)
+    
 
-    # Getting popular news
-    popular_news = get_news('everything')
-    # upcoming_news = get_news('upcoming')
-    # now_showing_news = get_news('now_playing')
-    title = 'Home - Welcome to The best News Review Website'
-    return render_template('index.html',id=id,title = title,popular = popular_news)
+@app.route('/news/<news_id>')
+def news(id):
+
+    '''
+    View news page function that returns the news details page and its data
+def get_articles(id):
+
+    '''
+    news=get_articles(id)
+    title= f'{id}'
+    return render_template('news.html',news = news)
+

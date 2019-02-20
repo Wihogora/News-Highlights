@@ -6,11 +6,12 @@ News = news.News
 # Getting api key
 api_key = app.config['NEWS_API_KEY']
 
+
 # Getting the news base url
-base_url = app.config['NEWS_API_BASE_URL']
+# base_url = app.config['NEWS_API_BASE_URL']
 
 # Getting the source base url
-source_base_url = app.config['NEWS_SOURCES_BASE_URL']
+source_base_url = app.config['NEWS_SOURCE_BASE_URL']
 
 # Getting the article base url
 articles_base_url = app.config['NEWS_ARTICLES_BASE_URL']
@@ -20,11 +21,12 @@ def get_news(category):
     '''
     Function that gets the json response to our url request
     '''
-    get_news_url = source_base_url.format(api_key)
+    get_news_url = source_base_url.format(category,api_key)
     print(get_news_url)
     with urllib.request.urlopen(get_news_url) as url:
         get_news_data = url.read()
         get_news_response = json.loads(get_news_data)
+        print(get_news_response)
 
         news_results = None
 
@@ -50,20 +52,24 @@ def process_results(news_list):
     for news_item in news_list:
         id = news_item.get('id')
         name = news_item.get('name')
+        description = news_item.get('description')
         url = news_item.get('url')
-        print(news_results)
-
+        category = news_item.get('category')
+        language = news_item.get('language')
+        country = news_item.get('country')
+       
     return news_results
 
 def get_articles(id):
     '''
     Function that gets the json response to our url request
     '''
-    get_articles_url = articles_base_url.format(id,api_key)
+    get_articles_url =  base_url.format(id,api_key)
 
     with urllib.request.urlopen(get_articles_url) as url:
         get_articles_data = url.read()
         get_articles_response = json.loads(get_articles_data)
+        
 
         articles_results = None
 
@@ -97,13 +103,13 @@ def process_articles(articles_list):
 
     return articles_results
 
-def get_newss(id):
-    get_news_details_url = base_url.format(id,api_key)
+def get_newss(category):
+    get_news_details_url =articles_base_url.format(id,api_key)
 
     with urllib.request.urlopen(get_news_details_url) as url:
         news_details_data = url.read()
         news_details_response = json.loads(news_details_data)
-
+        print( news_details_response)
         news_object = None
         if news_details_response:
             id = news_details_response.get('id')

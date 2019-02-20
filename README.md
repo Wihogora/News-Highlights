@@ -7,7 +7,7 @@ Wihogora Wivine
 This is a News Highlight program
 
 ## Link to site
-https://github.com/Wihogora/News-Highlights
+https://wivine.herokuapp.com/
 
 ## BDD
 *  A user should see various news sources on the homepage of the application.

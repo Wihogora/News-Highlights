@@ -1,35 +1,47 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        {% if title %}
-        <title> {{ title }}</title>
-        {% else %}
-        <title> Welcome to the News  website </title>
-        {% endif %}
-    </head>
+
 {% import 'macros.html' as macro%}
 {% extends 'base.html'%}
+{% block content %}
+<div class="jumbotron" style="background-color:bisque;">
+        <h1 style="text-align:center;",style="font-family:Times New Roman;">NEWS HIGHLIGHT</h1> 
+        <div class="container">
+            <h2>Categories:</h2>
+            <p>This Page contains 3 Categories:</p> 
+            <ul style="font-size:20px;">
+                <li>General News</li>
+                <li>Business News</li>
+                <li>Sports News</li>
+            </ul>
+        </div>
+</div>
+        <!-- Styles block -->
 
-    <body>
-        
+        {% block styles%}
+        {{ super() }}
+        <link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}">
+        {% endblock %}
+
         <!-- Content block -->
-        {% block content %}
+        
+       
 
         <!-- Popular News -->
-        <h3> Popular News</h3>
+        <div id="index">
+        
+        <h3> General News</h3>
         <ul>
-            {{ macro.displayNewsList(popular)}}
+            {{ macro.displayNewsList(general)}}
         </ul>
-        <h3> Upcoming News </h3>
+        <h3> Business News </h3>
         <ul>
-            {{ macro.displayNewsList(upcoming)}}
+            {{ macro.displayNewsList(business)}}
         </ul>
-        <h3>Now Showing</h3>
+        <h3>Sports</h3>
         <ul>
-            {{ macro.displayNewsList(now_showing)}}
+            {{ macro.displayNewsList(sports)}}
         </ul>
-
+        </div>
         {% endblock%}
-    </body>
-</html>
+      
+
+       

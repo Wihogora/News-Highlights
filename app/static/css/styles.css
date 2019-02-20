@@ -1,0 +1,11 @@
+#index h3{
+    text-align: center;
+    color: darkcyan;
+    font-size: 50px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.jumbotron h1{
+text-align: center;
+color: black;
+}

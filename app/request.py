@@ -1,7 +1,9 @@
 from app import app
 import urllib.request,json
 from .models import news
+
 News = news.News
+Articles= news.Articles
 
 # Getting api key
 api_key = app.config['NEWS_API_KEY']
@@ -54,30 +56,31 @@ def process_results(news_list):
         name = news_item.get('name')
         description = news_item.get('description')
         url = news_item.get('url')
-        category = news_item.get('category')
-        language = news_item.get('language')
-        country = news_item.get('country')
+        # category = news_item.get('category')
+        # language = news_item.get('language')
+        # country = news_item.get('country')
+        news_object = News(id,name,description,url)
         news_results.append(news_object)
-        
+    # print(news_results)
     return news_results
 
 def get_articles(id):
     '''
     Function that gets the json response to our url request
     '''
-    get_articles_url =  base_url.format(id,api_key)
+    get_articles_url =  articles_base_url .format(id,api_key)
+    # print(get_articles_url)
 
     with urllib.request.urlopen(get_articles_url) as url:
         get_articles_data = url.read()
         get_articles_response = json.loads(get_articles_data)
         
-
         articles_results = None
 
         if get_articles_response['articles']:
             articles_results_list = get_articles_response['articles']
             articles_results = process_articles(articles_results_list)
-
+    
     return articles_results
 
 
@@ -101,7 +104,7 @@ def process_articles(articles_list):
         if urlToImage:
             articles_object = Articles(id,title,name,url,urlToImage,publishedAt)
             articles_results.append(articles_object)
-
+    print(articles_results)
     return articles_results
 
 # def get_newss(category):

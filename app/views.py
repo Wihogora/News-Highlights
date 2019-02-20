@@ -17,15 +17,15 @@ def index():
     return render_template('index.html', title = title, general = general_news, business = business_news, sports = sports_news, technology = technology_news)
     
 
-@app.route('/news/<news_id>')
-def news(id):
+@app.route('/news/<id>')
+def articles(id):
 
     '''
     View news page function that returns the news details page and its data
 def get_articles(id):
 
     '''
-    news=get_articles(id)
+    articles=get_articles(id)
     title= f'{id}'
-    return render_template('news.html',news = news)
+    return render_template('news.html',id=id,articles = articles)
 
